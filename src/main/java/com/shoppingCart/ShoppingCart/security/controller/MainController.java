@@ -5,14 +5,25 @@ import com.shoppingCart.ShoppingCart.security.models.ERole;
 import com.shoppingCart.ShoppingCart.security.models.RoleEntity;
 import com.shoppingCart.ShoppingCart.security.models.UserEntity;
 import com.shoppingCart.ShoppingCart.security.repositoy.UserRepository;
+import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;
+import io.swagger.v3.oas.annotations.security.SecurityScheme;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Set;
 import java.util.stream.Collectors;
+
+@Configuration
+@SecurityScheme(
+        name = "bearerAuth",
+        type = SecuritySchemeType.HTTP,
+        scheme = "bearer",
+        bearerFormat = "JWT"
+)
 
 @RestController
 public class MainController {
@@ -33,7 +44,7 @@ public class MainController {
         return "Hello World Secured";
     }
 
-    @PostMapping("CreateUser")
+    @PostMapping("/CreateUser")
     public ResponseEntity<?> createUser(@Valid @RequestBody CreateUser createUser){
         Set<RoleEntity> roles = createUser.getRoles().stream()
                 .map(role -> RoleEntity.builder()
