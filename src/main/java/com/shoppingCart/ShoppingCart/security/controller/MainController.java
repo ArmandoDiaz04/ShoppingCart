@@ -34,15 +34,6 @@ public class MainController {
     @Autowired
     private  UserRepository userRepository;
 
-    @GetMapping("/hello")
-    public String hello() {
-        return "Hello World";
-    }
-
-    @GetMapping("/helloSecured")
-    public String helloSecured() {
-        return "Hello World Secured";
-    }
 
     @PostMapping("/CreateUser")
     public ResponseEntity<?> createUser(@Valid @RequestBody CreateUser createUser){
