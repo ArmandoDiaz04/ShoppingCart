@@ -14,23 +14,28 @@ import org.springframework.hateoas.RepresentationModel;
 @RequiredArgsConstructor
 public class ProductResponse extends RepresentationModel<ProductResponse> {
 
+    // ID of the product, generated from another API.
     @JsonProperty("id")
-    @Schema(name = "productId",required = true,example = "1",defaultValue = "2",description = "This key is generated from other api")
+    @Schema(name = "productId", required = true, example = "1", defaultValue = "2", description = "This key is generated from another API")
     private Integer productId;
 
+    // Name of the product, generated from another API.
     @JsonProperty("title")
-    @Schema(name = "name",required = true,example = "product name",defaultValue = "product name",description = "This key is generated from other api")
+    @Schema(name = "name", required = true, example = "product name", defaultValue = "product name", description = "This key is generated from another API")
     private String name;
 
+    // Description of the product, generated from another API.
     @JsonProperty("description")
-    @Schema(name = "description",required = true,example = "product description",defaultValue = "product description",description = "This key is generated from other api")
+    @Schema(name = "description", required = true, example = "product description", defaultValue = "product description", description = "This key is generated from another API")
     private String description;
 
-    @Schema(name = "imageUrl",required = true,example = "image url",defaultValue = "image url",description = "This key is generated from other api")
+    // URL of the product image, generated from another API.
+    @Schema(name = "imageUrl", required = true, example = "image url", defaultValue = "image url", description = "This key is generated from another API")
     @JsonProperty("image")
     private String imageUrl;
 
-    @Schema(name = "price",required = true,example = "product price",defaultValue = "product price",description = "This key is generated from other api")
+    // Price of the product, generated from another API. Default value is 0.
+    @Schema(name = "price", required = true, example = "product price", defaultValue = "product price", description = "This key is generated from another API")
     @JsonProperty("price")
     private double price = 0;
 

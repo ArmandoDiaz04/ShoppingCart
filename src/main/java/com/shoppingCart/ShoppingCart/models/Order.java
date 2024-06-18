@@ -2,7 +2,7 @@ package com.shoppingCart.ShoppingCart.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.shoppingCart.ShoppingCart.security.models.UserEntity;
+import com.shoppingCart.ShoppingCart.security.models.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -40,7 +40,7 @@ public class Order implements Serializable {
 
     @JoinColumn(name = "id_user", referencedColumnName = "userId", nullable = false)
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private UserEntity idUser;
+    private User idUser;
 
     @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idOrder", fetch = FetchType.LAZY)
